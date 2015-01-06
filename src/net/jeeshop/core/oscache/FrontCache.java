@@ -66,6 +66,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.StopWatch;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.TypeReference;
@@ -1124,46 +1125,96 @@ public class FrontCache {
 	 */
 	public void loadAllCache() throws Exception {
 		logger.error("loadAllCache...");
+		StopWatch sw = new StopWatch();
+		sw.start("loadHotquery");
 		loadHotquery();
-		loadCatalogs(true);
-		loadIndexLeftProduct();
-		loadAttributeList();
-		loadIndexImgs();
-		loadKeyValue();
-		loadNavigations();
-		loadSystemSetting();
-		loadPlugConfig();
-//		loadArea();
-		loadExpress();
-		loadAdvertList();
+		sw.stop();
 		
+		sw.start("loadCatalogs");
+		loadCatalogs(true);
+		sw.stop();
+
+		sw.start("loadIndexLeftProduct");
+		loadIndexLeftProduct();
+		sw.stop();
+		sw.start("loadAttributeList");
+		loadAttributeList();
+		sw.stop();
+		sw.start("loadIndexImgs");
+		loadIndexImgs();
+		sw.stop();
+		sw.start("loadKeyValue");
+		loadKeyValue();
+		sw.stop();
+		sw.start("loadNavigations");
+		loadNavigations();
+		sw.stop();
+		sw.start("loadSystemSetting");
+		loadSystemSetting();
+		sw.stop();
+		sw.start("loadPlugConfig");
+		loadPlugConfig();
+		sw.stop();
+//		loadArea();
+		sw.start("loadExpress");
+		loadExpress();
+		sw.stop();
+		sw.start("loadAdvertList");
+		loadAdvertList();
+		sw.stop();
+
+		sw.start("loadNewCatalogs");
 		loadNewCatalogs();
+		sw.stop();
+		sw.start("loadNews");
 		loadNews();
+		sw.stop();
 		
 //		loadHotProducts();
 //		loadNewProducts();
 //		loadSaleProducts();
 //		loadSuijiProducts();
+		sw.start("loadProductsShowInIndex");
 		loadProductsShowInIndex();
+		sw.stop();
+		sw.start("loadNotices");
 		loadNotices();
-		
+		sw.stop();
+
+		sw.start("loadProductStock");
 		loadProductStock();
+		sw.stop();
+		sw.start("loadAccountRank");
 		loadAccountRank();
+		sw.stop();
 //		loadHotSearch();
-		
+
+		sw.start("readJsonArea");
 		readJsonArea();
+		sw.stop();
+		sw.start("loadNotifyTemplate");
 		loadNotifyTemplate();
+		sw.stop();
 		
 		
 		//加载所有的活动列表
+		sw.start("loadActivityMap");
 		loadActivityMap();
+		sw.stop();
 		//加载促销活动的商品
+		sw.start("loadActivityProductList");
 		loadActivityProductList();
+		sw.stop();
 		//加载积分商城商品列表
+		sw.start("loadActivityScoreProductList");
 		loadActivityScoreProductList();
+		sw.stop();
 		//加载团购活动的商品列表
+		sw.start("loadActivityTuanProductList");
 		loadActivityTuanProductList();
+		sw.stop();
 		
+		System.out.println(sw.toString());
 		logger.error("前台缓存加载完毕!");
 	}
 
