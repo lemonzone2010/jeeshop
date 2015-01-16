@@ -11,4 +11,6 @@
 
 <script type="text/javascript" src="<%=request.getContextPath() %>/resource/js/manage.js"></script>
 
-
+<script>
+	var ROOT = "<%=request.getContextPath() %>";
+</script>

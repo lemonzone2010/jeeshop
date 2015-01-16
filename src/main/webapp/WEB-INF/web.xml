@@ -67,7 +67,7 @@
 
 	<filter-mapping>
 	       <filter-name>UrlRewriteFilter</filter-name>
-	       <url-pattern>/*</url-pattern>
+	       <url-pattern>*.html</url-pattern>
 	</filter-mapping>
 	
 	<filter-mapping>
@@ -78,6 +78,8 @@
 	<filter-mapping>
 	   <filter-name>struts2</filter-name>
 	   <url-pattern>*.action</url-pattern>
+		<dispatcher>REQUEST</dispatcher>  
+    	<dispatcher>FORWARD</dispatcher>
 	  </filter-mapping>
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
@@ -87,12 +89,14 @@
 	    <filter-name>struts2</filter-name>
 	    <url-pattern>/struts/*</url-pattern>
 	</filter-mapping>
+	<!-- 
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>  
     	<dispatcher>FORWARD</dispatcher>
 	</filter-mapping>
+	 -->
 	
 	<!--  
 	<error-page>

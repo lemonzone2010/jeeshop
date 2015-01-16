@@ -7,7 +7,7 @@
 
 	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<constant name="struts.devMode" value="false" />
-	
+	<constant name="struts.action.extension" value="action"/> 
 	<constant name="struts.multipart.maxSize" value="6846970006" />
 	<constant name="struts.i18n.encoding" value="UTF-8" />
 	<constant name="struts.multipart.saveDir" value="/tmp" />

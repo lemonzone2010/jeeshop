@@ -10,13 +10,46 @@
 <%@ include file="/resource/common_html_validator.jsp"%>
 
 <link rel="stylesheet" href="<%=request.getContextPath() %>/resource/jquery-jquery-ui/themes/base/jquery.ui.all.css">
-<link rel="stylesheet" href="<%=request.getContextPath() %>/resource/kindeditor-4.1.7/themes/default/default.css" />
+<script src="<%=request.getContextPath() %>/resource/layer/layer.min.js"></script>
+<script src="<%=request.getContextPath() %>/resource/js/ajaxfileupload.js"></script>
 <style>
 #insertOrUpdateMsg{
 border: 0px solid #aaa;margin: 0px;position: fixed;top: 0;width: 100%;
 background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18px;color: red;
 }
 </style>
+<script type="text/javascript">
+	var	pageii;
+	function test() {
+		pageii = $.layer({
+			type: 1,
+			title: false,
+			area: ['auto', 'auto'],
+			border: [0], //去掉默认边框
+			closeBtn: [0, false], //去掉默认关闭按钮
+			shift: 'left', //从左动画弹出
+			page: {
+				html: '<input type="file" id="uploadimage" name="uploadimage" onchange="ajaxupload();" />'
+			}
+		});
+	}
+	
+	function ajaxupload() {
+		$.ajaxFileUpload({  
+	        url: ROOT + '/uploadify.do',  
+	        secureuri:false,  
+	        fileElementId: 'uploadimage',
+	        dataType:'json',
+	        success: function (data, status) {
+	        	alert(data);
+	        },  
+	        error: function (data, status, e) {  
+	            alert(e.message);
+	        }  
+	    });  
+	}
+
+</script>
 </head>
 
 <body>
@@ -103,12 +136,6 @@ background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18
 							<tr>
 								<td style="text-align: right;">类别</td>
 								<td colspan="1">
-									<!-- 
-									<input id="combotree22" name="e.catalogID" value="<s:property value="e.catalogID"/>" 
-									class="easyui-combotree" data-options="url:'<%=request.getContextPath() %>/manage/catalog/catalog!getRootWithTreegrid.action?e.type=p',method:'get',required:false" 
-									></input>(请选择子类别)
-									 -->
-									
 									<%
 									application.setAttribute("catalogs", SystemManager.catalogs);
 									%>
@@ -135,21 +162,10 @@ background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18
 									data-rule="商品简介;required;introduce;length[4~500];"/>
 								</td>
 							</tr>
-		<!-- 					<tr> -->
-		<!-- 						<td style="text-align: right;">大图</td>    -->
-		<!-- 						<td style="text-align: left;" colspan="3"> -->
-		<!-- 							<input type="button" id="max_filemanager" value="浏览服务器" class="btn btn-warning"/> -->
-		<%-- 							<s:textfield type="text" id="maxPicture" name="e.maxPicture" style="width: 600px;" readonly="true"  --%>
-		<%-- 							data-rule="大图;required;maxPicture;"/> --%>
-		<%-- 							<a target="_blank" href="<%=SystemManager.systemSetting.getImageRootPath()%>/..<s:property value="e.maxPicture" />"> --%>
-		<%-- 								<img style="max-width: 50px;max-height: 50px;" alt="" src="<%=SystemManager.systemSetting.getImageRootPath()%>/..<s:property value="e.maxPicture" />"> --%>
-		<!-- 							</a> -->
-		<!-- 						</td> -->
-		<!-- 					</tr> -->
 							<tr>
 								<td style="text-align: right;">主图</td>   
 								<td style="text-align: left;" colspan="3">
-									<input type="button" name="filemanager" value="浏览图片" class="btn btn-success"/>
+									<input type="button" value="选择图片" onclick="test();" class="btn btn-success"/>
 									<s:textfield type="text" id="picture" name="e.picture" ccc="imagesInput" style="width: 600px;" 
 									data-rule="小图;required;maxPicture;"/>
 									<s:if test="e.picture!=null">
@@ -264,7 +280,7 @@ background-color: #d1d1d1;display: none;height: 30px;z-index: 9999;font-size: 18
 						<td>
 							<%for(int i=0;i<10;i++){ %>
 							<div>
-								<input type="button" name="filemanager" value="浏览图片" class="btn btn-warning"/>
+								<input type="button" id="browseImage" value="浏览图片" class="btn btn-warning"/>
 								<input type="text" ccc="imagesInput" name="e.images" style="width: 80%;" />
 							</div>
 							<%} %>

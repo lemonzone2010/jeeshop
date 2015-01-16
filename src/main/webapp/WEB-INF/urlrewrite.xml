@@ -6,7 +6,7 @@
 	<!-- 产品详细信息 -->
 	<rule>
 		<from>/product/([0-9]+).html</from>
-		<to last="true">/product!product?e.id=$1</to>
+		<to last="true">/product!product.action?e.id=$1</to>
 	</rule>
 	
 	<!--请求prouct中的方法，注意：要和请求商品明细区别开来-->
@@ -85,7 +85,7 @@
 	<!-- 转到帮助中心 -->
 	<rule>
 		<from>/help/([0-9a-zA-Z]+).html</from>
-		<to last="true">/news!help?helpCode=$1</to>
+		<to last="true">/news!help.action?helpCode=$1</to>
 	</rule>
 	
 	<!-- 此优先级是最低的,直接转发 -->
