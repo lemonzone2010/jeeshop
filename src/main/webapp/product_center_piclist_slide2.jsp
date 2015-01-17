@@ -46,8 +46,7 @@ div.zoomMask{position:absolute;background:url("<%=request.getContextPath() %>/re
 		<s:iterator value="e.productImageList" status="i" var="img">
 			<s:if test="#i.index==0">
 				<a href="<%=SystemManager.systemSetting.getImageRootPath()%><s:property escape="false" value="image3" />">
-				<img 
-				src="<%=SystemManager.systemSetting.getImageRootPath()%><s:property escape="false" value="image2" />" 
+				<img src="<%=SystemManager.systemSetting.getImageRootPath()%><s:property escape="false" value="image2" />" 
 				rel="<%=SystemManager.systemSetting.getImageRootPath()%><s:property escape="false" value="image3" />" class="jqzoom" /></a>
 			</s:if>
 		</s:iterator>

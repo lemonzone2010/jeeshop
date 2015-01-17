@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="MySQL">
+	<select id="queryForList" remapResults="true" parameterClass="java.lang.String" resultClass="java.util.HashMap">
+		$querySQL$
+	</select>
+	
+	<select id="queryForObject" remapResults="true" parameterClass="java.lang.String" resultClass="java.lang.Object">
+		$querySQL$
+	</select>
+	
+	<update id="executeSQL" parameterClass="java.lang.String">
+		$executeSQL$
+	</update>
+</sqlMap>

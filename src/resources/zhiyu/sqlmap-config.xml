@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE sqlMapConfig  PUBLIC "-//iBATIS.com//DTD SQL Map
+Config 2.0/" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+    <settings cacheModelsEnabled="false" enhancementEnabled="true"
+              lazyLoadingEnabled="false" errorTracingEnabled="true" maxRequests="1000"
+              maxSessions="300" maxTransactions="300" useStatementNamespaces="true"
+              defaultStatementTimeout="10"/>
+    
+    <sqlMap resource="zhiyu/sqlmap/mysql.xml"/>
+</sqlMapConfig>
