@@ -31,13 +31,13 @@ public class ManageInterceptor extends AbstractInterceptor {
 	public static final String not_db_privilege = "not_db_privilege";//没有数据库增、删、改、查 的权限
 
 	public String intercept(ActionInvocation actionInvocation) throws Exception {
-		logger.error("ManageInterceptor.intercept...");
+		logger.info("ManageInterceptor.intercept...");
 		try {
 			return intercept0(actionInvocation);
 		} catch (Throwable e) {
 			e.printStackTrace();
 			String msg = e.getMessage();
-			logger.error("msg="+msg);
+			logger.info("msg="+msg);
 			if(StringUtils.isNotBlank(msg)){
 				ServletActionContext.getRequest().getSession().setAttribute(ManageContainer.action_exception_error, msg);
 			}else{
@@ -63,21 +63,21 @@ public class ManageInterceptor extends AbstractInterceptor {
 			throw new NullPointerException("操作的action的method不能为空！");
 		}
 		
-		logger.error(">>ManageInterceptor==actionName="+actionName+";method="+method+";action="+action+";namespace="+namespace);
-//		logger.error(">>ManageInterceptor==actionName="+actionName+";method="+method+";action="+action+";namespace="+namespace+";action2="+action2);
+		logger.info(">>ManageInterceptor==actionName="+actionName+";method="+method+";action="+action+";namespace="+namespace);
+//		logger.info(">>ManageInterceptor==actionName="+actionName+";method="+method+";action="+action+";namespace="+namespace+";action2="+action2);
 //		String url = actionName+"!"+method+".action";
 //		StringBuffer urlBuff = new StringBuffer(actionName);
 //		urlBuff.append("!").append(method).append(".action");
 //		actionInvocation.getInvocationContext().
 		
 		if (action2 instanceof UserAction || action2 instanceof MenuAction) {
-//			logger.error("不对用户登陆进行拦截。不对加载权限资源进行拦截");
+//			logger.info("不对用户登陆进行拦截。不对加载权限资源进行拦截");
 			return actionInvocation.invoke();
 		}
 //		HttpSession session = ServletActionContext.getRequest().getSession();
 		User user = (User) ServletActionContext.getRequest().getSession().getAttribute(ManageContainer.manage_session_user_info);
 		if(user==null){
-			logger.error("用户失效，请登录！");
+			logger.info("用户失效，请登录！");
 			//转到登陆界面
 //			ServletActionContext.getResponse().sendRedirect(SystemManager.systemSetting.getManageHttp()+"/error.jsp");
 			return login;
@@ -111,26 +111,26 @@ public class ManageInterceptor extends AbstractInterceptor {
 				dbMethod = ManageContainer.db_delete;
 			}
 			
-//			logger.error("optionMethod="+dbMethod);
+//			logger.info("optionMethod="+dbMethod);
 			if(dbMethod!=null){
-				logger.error("action-method权限检查：user.getDbPrivilegeMap()="+user.getDbPrivilegeMap()+",method="+method);
-				logger.error("user.getDbPrivilegeMap().get(optionMethod)="+user.getDbPrivilegeMap().get(dbMethod));
+				logger.info("action-method权限检查：user.getDbPrivilegeMap()="+user.getDbPrivilegeMap()+",method="+method);
+				logger.info("user.getDbPrivilegeMap().get(optionMethod)="+user.getDbPrivilegeMap().get(dbMethod));
 				String op = user.getDbPrivilegeMap().get(dbMethod);//获取此人的权限
 				if(StringUtils.isBlank(op)){
 					/*
 					 * 如果此人没有dbMethod对应的数据库操作的权限，则判断是不具备哪一种权限
 					 */
 					if(dbMethod.equals(ManageContainer.db_insert)){
-						logger.error(ManageContainer.db_privilege_insert_error);
+						logger.info(ManageContainer.db_privilege_insert_error);
 						ServletActionContext.getRequest().getSession().setAttribute(ManageContainer.action_db_error, ManageContainer.db_privilege_insert_error);
 					}else if(dbMethod.equals(ManageContainer.db_update)){
-						logger.error(ManageContainer.db_privilege_update_error);
+						logger.info(ManageContainer.db_privilege_update_error);
 						ServletActionContext.getRequest().getSession().setAttribute(ManageContainer.action_db_error, ManageContainer.db_privilege_update_error);
 					}else if(dbMethod.equals(ManageContainer.db_delete)){
-						logger.error(ManageContainer.db_privilege_delete_error);
+						logger.info(ManageContainer.db_privilege_delete_error);
 						ServletActionContext.getRequest().getSession().setAttribute(ManageContainer.action_db_error, ManageContainer.db_privilege_delete_error);
 					}else{
-						logger.error("原因未知！请通知管理员检查原因！");
+						logger.info("原因未知！请通知管理员检查原因！");
 						ServletActionContext.getRequest().getSession().setAttribute(ManageContainer.action_db_error, "原因未知！请通知管理员检查原因！");
 					}
 					return not_db_privilege;
@@ -138,14 +138,14 @@ public class ManageInterceptor extends AbstractInterceptor {
 			}
 		}
 		
-		logger.error("ManageInterceptor.actionInvocation.invoke().");
+		logger.info("ManageInterceptor.actionInvocation.invoke().");
 		return actionInvocation.invoke();
 		
 		//对其他用户则进行权限验证，没有权限，则提示无权限。
 //		if(PrivilegeUtil.check(ServletActionContext.getRequest().getSession(), urlBuff.toString())){
 //			return actionInvocation.invoke();
 //		}else{
-//			logger.error("没有权限！");
+//			logger.info("没有权限！");
 ////			ServletActionContext.getResponse().sendRedirect(SystemManager.systemSetting.getManageHttp()+"/error.jsp");
 //			return not_privilege;
 //		}

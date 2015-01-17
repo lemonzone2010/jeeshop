@@ -33,7 +33,7 @@ public class ManageCacheTask implements Runnable {
 				e.printStackTrace();
 			}
 
-			logger.error("OrderCancelTask.run...");
+			logger.info("OrderCancelTask.run...");
 			try {
 				manageCache.loadAllCache();
 			} catch (Exception e1) {

@@ -1,3 +1,4 @@
+<%@page import="net.jeeshop.core.FrontContainer"%>
 <%@page import="net.jeeshop.core.front.SystemManager"%>
 <%@page import="net.jeeshop.core.ManageContainer"%>
 <%@ page contentType="text/html; charset=UTF-8"%>

@@ -37,7 +37,7 @@ public class TokenUtil {
 			MessageDigest md = MessageDigest.getInstance("md5");
 			byte[] md5 = md.digest(UUID.randomUUID().toString().getBytes());
 			String token = encoder.encode(md5);
-//			logger.error("tokenStr=" + token);
+//			logger.info("tokenStr=" + token);
 			session.setAttribute("token", token);
 			return token;
 		} catch (NoSuchAlgorithmException e) {
@@ -59,7 +59,7 @@ public class TokenUtil {
 			}
 			String server_token = (String) request.getSession().getAttribute("token");
 			request.getSession().removeAttribute("token");
-			logger.error("server_token = " + server_token);
+			logger.info("server_token = " + server_token);
 			if (server_token == null) {
 				return false;
 			}

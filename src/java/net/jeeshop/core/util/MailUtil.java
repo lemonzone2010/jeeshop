@@ -80,7 +80,7 @@ public class MailUtil {
 	// 开始发送信件的方法
 	public boolean startSend(String emailTitle,String emailContent) {
 		if(StringUtils.isBlank(emailContent)){
-			logger.error("邮件内容不能为空！");
+			logger.info("邮件内容不能为空！");
 			return false;
 		}
 		

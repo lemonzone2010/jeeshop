@@ -146,10 +146,10 @@ public class FreemarkerHelper {
 		param.setType("help");
 		List<News> notices = newsService.selectList(param);
 		if(notices==null || notices.size()==0){
-			logger.error("notices size = 0");
+			logger.info("notices size = 0");
 			return;
 		}
-		logger.error("notices size = " + notices.size());
+		logger.info("notices size = " + notices.size());
 		
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		for(int i=0;i<notices.size();i++){
@@ -162,7 +162,7 @@ public class FreemarkerHelper {
 			data.put("e", news);
 			String templateHtml = ServletActionContext.getServletContext().getRealPath("/")+"/jsp/helps/"+news.getId()+".jsp";
 			crateHTML(ServletActionContext.getServletContext(), data, template_newsInfo,templateHtml);
-			logger.error("生成html页面成功！id="+news.getId());
+			logger.info("生成html页面成功！id="+news.getId());
 		}
 	}
 	
@@ -175,10 +175,10 @@ public class FreemarkerHelper {
 		param.setType("notice");
 		List<News> notices = newsService.selectList(param);
 		if(notices==null || notices.size()==0){
-			logger.error("notices size = 0");
+			logger.info("notices size = 0");
 			return;
 		}
-		logger.error("notices size = " + notices.size());
+		logger.info("notices size = " + notices.size());
 		
 		HashMap<String, Object> data = new HashMap<String, Object>();
 		for(int i=0;i<notices.size();i++){
@@ -191,7 +191,7 @@ public class FreemarkerHelper {
 			data.put("e", news);
 			String templateHtml = ServletActionContext.getServletContext().getRealPath("/")+"/jsp/notices/"+news.getId()+".jsp";
 			crateHTML(ServletActionContext.getServletContext(), data, template_newsInfo,templateHtml);
-			logger.error("生成html页面成功！id="+news.getId());
+			logger.info("生成html页面成功！id="+news.getId());
 		}
 	}
 
@@ -202,10 +202,10 @@ public class FreemarkerHelper {
 	public String products() throws Exception {
 		List<Product> productList = productService.selectListProductHTML(new Product());
 		if(productList==null || productList.size()==0){
-			logger.error("productList size = 0");
+			logger.info("productList size = 0");
 			return null;
 		}
-		logger.error("productList size = " + productList.size());
+		logger.info("productList size = " + productList.size());
 		StringBuilder errorBuff = new StringBuilder();
 		
 		HashMap<String, Object> data = new HashMap<String, Object>();
@@ -222,12 +222,12 @@ public class FreemarkerHelper {
 				crateHTML(ServletActionContext.getServletContext(), data, template_product,templateHtml);
 			} catch (Exception e) {
 				e.printStackTrace();
-				logger.error("生成html页面失败！id="+p.getId());
+				logger.info("生成html页面失败！id="+p.getId());
 				
 				errorBuff.append(p.getId()+",");
 				continue;
 			}
-			logger.error("生成html页面成功！id="+p.getId());
+			logger.info("生成html页面成功！id="+p.getId());
 		}
 		
 		if(errorBuff.length()==0){
@@ -245,7 +245,7 @@ public class FreemarkerHelper {
 	public String staticProductByID(String id) throws Exception {
 		Product p = productService.selectById(id);
 		if(p==null || StringUtils.isBlank(p.getProductHTML())){
-			logger.error("ERROR,not found product by id = " + id);
+			logger.info("ERROR,not found product by id = " + id);
 			throw new NullPointerException("ERROR,not found product by id = " + id);
 		}
 		
@@ -254,7 +254,7 @@ public class FreemarkerHelper {
 		data.put("e", p);
 		String templateHtml = ServletActionContext.getServletContext().getRealPath("/")+"/jsp/product/"+p.getId()+".jsp";
 		crateHTML(ServletActionContext.getServletContext(), data, template_product,templateHtml);
-		logger.error("生成html页面成功！id="+p.getId());
+		logger.info("生成html页面成功！id="+p.getId());
 		
 		return "success";
 	}
@@ -272,7 +272,7 @@ public class FreemarkerHelper {
 		
 		News news = newsService.selectById(id);
 		if(news==null || StringUtils.isBlank(news.getContent())){
-			logger.error("ERROR,not found news by id = " + id);
+			logger.info("ERROR,not found news by id = " + id);
 			throw new NullPointerException("ERROR,not found news by id = " + id);
 		}
 		
@@ -287,7 +287,7 @@ public class FreemarkerHelper {
 			templateHtml = ServletActionContext.getServletContext().getRealPath("/")+"/jsp/notices/"+news.getId()+".jsp";
 		}
 		crateHTML(ServletActionContext.getServletContext(), data, template_newsInfo,templateHtml);
-		logger.error("生成html页面成功！id="+news.getId());
+		logger.info("生成html页面成功！id="+news.getId());
 		
 		return "success";
 	}

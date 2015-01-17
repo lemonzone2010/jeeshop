@@ -77,7 +77,7 @@ public class NewsAction extends BaseAction<News> {
 		super.setSelectMenu(FrontContainer.not_select_menu);//设置主菜单为不选中
 		
 		String id = getRequest().getParameter("id");
-		logger.error("NewsAction.newsInfo=== id="+id);
+		logger.info("NewsAction.newsInfo=== id="+id);
 		if(StringUtils.isBlank(id)){
 			throw new NullPointerException("id is null");
 		}
@@ -92,7 +92,7 @@ public class NewsAction extends BaseAction<News> {
 		}
 		
 		String url = "/jsp/notices/"+e.getId()+".jsp";
-		logger.error("url = " + url);
+		logger.info("url = " + url);
 		getRequest().setAttribute("newsInfoUrl",url);
 		
 		return "newsInfo";
@@ -106,7 +106,7 @@ public class NewsAction extends BaseAction<News> {
 		
 		super.setSelectMenu(FrontContainer.not_select_menu);//设置主菜单为不选中
 		
-		logger.error("this.helpCode="+this.helpCode);
+		logger.info("this.helpCode="+this.helpCode);
 		if(StringUtils.isBlank(this.helpCode)){
 			throw new NullPointerException("helpCode参数不能为空");
 		}else if(this.helpCode.equals("index")){
@@ -120,7 +120,7 @@ public class NewsAction extends BaseAction<News> {
 			}
 			
 			String url = "/jsp/helps/"+news.getId()+".jsp";
-			logger.error("url = " + url);
+			logger.info("url = " + url);
 			getRequest().setAttribute("newsInfoUrl",url);
 			
 			return "help";

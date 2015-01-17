@@ -130,13 +130,9 @@ function defaultProductImg(){
 								</s:iterator>
 							</div>
 						</s:if>
-						
 						<s:if test="#request.attrs!=null and #request.attrs.size()!=0">
-							
 							<div class="panel panel-default" style="margin:10px 0px;">
 					              <div class="panel-body" style="font-weight: normal;text-align: center;">
-					              	  
-<%-- 					              	    <span style="margin:5px;font-weight: bold;">属性</span> --%>
 										<div style="padding-left: 0px;">
 											<s:iterator value="#request.attrs" status="i" var="row">
 												<div class="row" style="margin-bottom: 5px;">
@@ -147,12 +143,12 @@ function defaultProductImg(){
 														<s:iterator value="attrList" status="i2" var="row2">
 															<s:if test="id==attributeID">
 																<span class="label label-success attr_css">
-																		<a href="<%=request.getContextPath() %>/catalog/attr/<s:property escape="false" value="id" />.html?orderBy=<s:property escape="false" value="orderBy" />"><s:property escape="false" value="name" /></a>
+																	<a href="<%=request.getContextPath() %>/catalog/attr/<s:property escape="false" value="id" />.html?orderBy=<s:property escape="false" value="orderBy" />"><s:property escape="false" value="name" /></a>
 																</span>
 															</s:if>
 															<s:else>
 																<span class="label label-info2 attr_css">
-																		<a href="<%=request.getContextPath() %>/catalog/attr/<s:property escape="false" value="id" />.html?orderBy=<s:property escape="false" value="orderBy" />"><s:property escape="false" value="name" /></a>
+																	<a href="<%=request.getContextPath() %>/catalog/attr/<s:property escape="false" value="id" />.html?orderBy=<s:property escape="false" value="orderBy" />"><s:property escape="false" value="name" /></a>
 																</span>
 															</s:else>
 														</s:iterator>
@@ -160,16 +156,12 @@ function defaultProductImg(){
 													</div>
 												</div>
 											</s:iterator>
-					              	  
 						              </div>
 					              </div>
 							</div>
-								
-							
 						</s:if>
 					</div>
 				</div>
-		
 				<!-- 排序栏 -->
 				<s:if test="!(productList==null or productList.size==0)">
 					<div class="row" style="margin: 0px;">
@@ -211,8 +203,6 @@ function defaultProductImg(){
 					</div>
 					<div ><hr style="clear: both;"></div>
 				</s:if>
-				
-				
 				<div class="row">
 					<!-- 商品展示 -->
 					<div >

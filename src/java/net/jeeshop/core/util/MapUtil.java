@@ -78,7 +78,7 @@ public class MapUtil {
 				address = URLEncoder.encode(address, "UTF-8");// 进行这一步是为了避免乱码
 			} catch (UnsupportedEncodingException e1) {
 				e1.printStackTrace();
-//				logger.error("转码失败", e1);
+//				logger.info("转码失败", e1);
 			}
 			String[] arr = new String[4];
 			arr[0] = address;
@@ -105,9 +105,9 @@ public class MapUtil {
 				}
 				ret = "" + sb;
 			} catch (MalformedURLException e) {e.printStackTrace();
-//				logger.error("通过http方式获取地址信息失败", e);
+//				logger.info("通过http方式获取地址信息失败", e);
 			} catch (IOException e) {e.printStackTrace();
-//				logger.error("文件读取失败", e);
+//				logger.info("文件读取失败", e);
 			}
 		}
 		return ret;

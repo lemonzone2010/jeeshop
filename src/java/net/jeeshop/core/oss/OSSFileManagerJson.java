@@ -43,7 +43,7 @@ public class OSSFileManagerJson {
 	private OSSClient client;
 	
 	public String write(HttpServletRequest request,HttpServletResponse response){
-		logger.error("write...");
+		logger.info("write...");
 		SystemSetting systemSetting = SystemManager.systemSetting;
 		//根目录路径，可以指定绝对路径，比如 /var/www/attached/
 		String rootPath = null;//pageContext.getServletContext().getRealPath("/") + "attached/";
@@ -55,7 +55,7 @@ public class OSSFileManagerJson {
 		String[] fileTypes = new String[]{"gif", "jpg", "jpeg", "png", "bmp"};
 
 		String dirName = request.getParameter("dir");
-		logger.error("dirName = "+dirName);
+		logger.info("dirName = "+dirName);
 		if (dirName != null) {
 			if(!Arrays.<String>asList(new String[]{"image", "flash", "media", "file"}).contains(dirName)){
 //				out.println("Invalid Directory name.");
@@ -75,7 +75,7 @@ public class OSSFileManagerJson {
 		String currentDirPath = path;
 		String moveupDirPath = "";
 		
-		logger.error("path="+path);
+		logger.info("path="+path);
 		
 		if (!"".equals(path)) {
 			String str = currentDirPath.substring(0, currentDirPath.length() - 1);
@@ -111,15 +111,15 @@ public class OSSFileManagerJson {
 		if(StringUtils.isNotBlank(path)){
 			_tmpRootPath = _tmpRootPath + path;
 		}
-		logger.error("_tmpRootPath="+_tmpRootPath);
+		logger.info("_tmpRootPath="+_tmpRootPath);
 		
 		ObjectListing osslist = getDirList(_tmpRootPath);
 		if((osslist.getCommonPrefixes()==null || osslist.getCommonPrefixes().size()==0) && 
 				(osslist.getObjectSummaries()==null || osslist.getObjectSummaries().size()==0)){
-			logger.error("没有文件夹和目录！");
+			logger.info("没有文件夹和目录！");
 		}else{
 			//遍历所有文件夹CommonPrefix
-            logger.error("文件夹CommonPrefixs:");
+            logger.info("文件夹CommonPrefixs:");
             for (String commonPrefix : osslist.getCommonPrefixes()) {
 //	                System.out.println(commonPrefix);
             	String filename = commonPrefix.substring(_tmpRootPath.length());
@@ -129,7 +129,7 @@ public class OSSFileManagerJson {
                 Hashtable<String, Object> hash = new Hashtable<String, Object>();
                 
 //                boolean ss = hasFile("myshopxx", _tmpRootPath, client);
-//                logger.error("sss="+ss);
+//                logger.info("sss="+ss);
                 
                 hash.put("is_dir", true);
 				hash.put("has_file", true);//(file.listFiles() != null));
@@ -142,12 +142,12 @@ public class OSSFileManagerJson {
 				fileList.add(hash);
             }
             
-			logger.error("Objects:");
+			logger.info("Objects:");
 			//获取所有的文件列表
             for (OSSObjectSummary objectSummary : osslist.getObjectSummaries()) {
 //	                System.out.println(objectSummary.getKey()+","+objectSummary.getETag());
             	Hashtable<String, Object> hash = new Hashtable<String, Object>();
-            	logger.error("objectSummary.getKey()="+objectSummary.getKey());
+            	logger.info("objectSummary.getKey()="+objectSummary.getKey());
             	if(StringUtils.isBlank(objectSummary.getKey()) || objectSummary.getKey().equals(_tmpRootPath)){
             		continue;
             	}
@@ -156,7 +156,7 @@ public class OSSFileManagerJson {
             	if(filename.endsWith("/")){
             		filename = filename.substring(0, filename.length()-1);
             	}
-            	logger.error("filename="+filename);
+            	logger.info("filename="+filename);
             	String _fileName = filename.substring(0,filename.lastIndexOf("."));
             	String[] arr = _fileName.split("_");
             	if(arr.length==2){
@@ -194,7 +194,7 @@ public class OSSFileManagerJson {
 		result.put("total_count", fileList.size());
 		result.put("file_list", fileList);
 		
-		logger.error("result.toJSONString()="+result.toJSONString());
+		logger.info("result.toJSONString()="+result.toJSONString());
 		return result.toJSONString();
 	}
 	
@@ -259,7 +259,7 @@ public class OSSFileManagerJson {
             throws OSSException, ClientException{
 
         if (client.isBucketExist(bucketName)){
-        	logger.error("isBucketExist true");
+        	logger.info("isBucketExist true");
             return;
         }
 

@@ -59,7 +59,7 @@ public class HttpUtil {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(),charset));
 		while ((sCurrentLine = reader.readLine()) != null) {
 //			buff.append(new String(sCurrentLine.getBytes(), charset));
-			logger.error("sCurrentLine="+sCurrentLine);
+			logger.info("sCurrentLine="+sCurrentLine);
 			buff.append(sCurrentLine);
 		}
 		return buff.toString();

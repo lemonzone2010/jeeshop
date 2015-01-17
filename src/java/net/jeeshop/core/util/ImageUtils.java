@@ -111,7 +111,7 @@ public class ImageUtils {
 			 * 图片裁剪区域。Rectangle 指定了坐标空间中的一个区域，通过 Rectangle 对象
 			 * 的左上顶点的坐标（x，y）、宽度和高度可以定义这个区域。
 			 */
-			logger.error("x="+x+",y="+y+",width="+width+",height="+height);
+			logger.info("x="+x+",y="+y+",width="+width+",height="+height);
 			Rectangle rect = new Rectangle(x, y, width, height);
 			// 提供一个 BufferedImage，将其用作解码像素数据的目标。
 			param.setSourceRegion(rect);
@@ -194,7 +194,7 @@ public class ImageUtils {
 			os = new FileOutputStream(ThF);
 			ImageIO.write((BufferedImage) Itemp, suffix, os);
 		} catch (Exception ex) {
-			logger.error("图片缩放存储异常，e = "+ex);
+			logger.info("图片缩放存储异常，e = "+ex);
 			ex.printStackTrace();
 //			throw new Exception(" ImageIo.write error in CreatThum.: "
 //					+ ex.getMessage());

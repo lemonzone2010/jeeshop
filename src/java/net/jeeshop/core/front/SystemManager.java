@@ -167,7 +167,7 @@ public class SystemManager {
 	 */
 	public String getImageRandom(){
 		if(systemSetting==null || systemSetting.getImagesList()==null || systemSetting.getImagesList().size()==0){
-			logger.error("系统未设置图集，但广告位却设置了图集优先显示。请管理员立刻设置图集。");
+			logger.info("系统未设置图集，但广告位却设置了图集优先显示。请管理员立刻设置图集。");
 			return null;
 		}
 		
@@ -223,14 +223,14 @@ public class SystemManager {
 	 * @param catalogCode
 	 */
 	public List<Product> getProductsByCatalogCode(String catalogCode){
-		logger.error("getProductsByCatalogCode.catalogCode = " + catalogCode);
+		logger.info("getProductsByCatalogCode.catalogCode = " + catalogCode);
 		if(StringUtils.isNotBlank(catalogCode)){
 			Catalog catalog = SystemManager.catalogsCodeMap.get(catalogCode);
 			if(catalog!=null){
 				if(catalog.getHotProducts()==null || catalog.getHotProducts().size()==0){
-					logger.error("catalog.getHotProducts()=0");
+					logger.info("catalog.getHotProducts()=0");
 				}else{
-					logger.error("catalog.getHotProducts()="+catalog.getHotProducts().size());
+					logger.info("catalog.getHotProducts()="+catalog.getHotProducts().size());
 				}
 				return catalog.getHotProducts();
 			}

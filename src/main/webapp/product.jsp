@@ -175,7 +175,6 @@ function defaultProductImg(){
 						<div class="row">
 							<div class="col-xs-3">
 								<a href="<%=request.getContextPath() %>/product/<s:property escape="false" value="id" />.html" target="_blank" title="<s:property escape="false" value="name" />">
-									
 									<img class="lazy" style="border: 0px;display: block;margin: auto;width: 50px;height: 50px;" 
 									src="<%=SystemManager.systemSetting.getDefaultProductImg()%>" 
 									data-original="<%=SystemManager.systemSetting.getImageRootPath() %><s:property escape="false" value="picture" />" />

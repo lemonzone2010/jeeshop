@@ -87,7 +87,7 @@ public class FreemarkerAction extends BaseAction<Account> {
 	 */
 	public String create() throws Exception{
 		String method = getRequest().getParameter("method");
-		logger.error("create method = " + method);
+		logger.info("create method = " + method);
 		if(StringUtils.isBlank(method)){
 			
 		}else if(method.equals("helps")){

@@ -129,11 +129,11 @@ public class UserAction extends BaseAction<User> implements
 		e.setPassword(MD5.md5(e.getPassword()));
 		User u = ((UserService)getServer()).login(e);
 		if (u == null) {
-			logger.error("登陆失败，账号不存在！");
+			logger.info("登陆失败，账号不存在！");
 			getSession().setAttribute(ManageContainer.loginError, errorMsg);
 			return INPUT;
 		}else if(!u.getStatus().equals(User.user_status_y)){
-			logger.error("帐号已被禁用，请联系管理员!");
+			logger.info("帐号已被禁用，请联系管理员!");
 			errorMsg = "<font color='red'>帐号已被禁用，请联系管理员!</font>";
 			getSession().setAttribute(ManageContainer.loginError, errorMsg);
 			return INPUT;
@@ -219,7 +219,7 @@ public class UserAction extends BaseAction<User> implements
 	}
 
 	private String save0() throws Exception {
-		logger.error("save0..."+e.getPassword()+","+e.getNewpassword2());
+		logger.info("save0..."+e.getPassword()+","+e.getNewpassword2());
 		
 		if(StringUtils.isBlank(e.getId())){//添加
 			if(StringUtils.isBlank(e.getPassword()) || StringUtils.isBlank(e.getNewpassword2())){
@@ -281,11 +281,11 @@ public class UserAction extends BaseAction<User> implements
 	 * @throws IOException
 	 */
 	public String unique() throws IOException{
-		logger.error("验证输入的字符的唯一性"+e);
+		logger.info("验证输入的字符的唯一性"+e);
 		getResponse().setCharacterEncoding("utf-8");
 		synchronized (this) {
 			if(StringUtils.isNotBlank(e.getNickname())){//验证昵称是否被占用
-				logger.error("验证昵称是否被占用");
+				logger.info("验证昵称是否被占用");
 				User user = new User();
 				user.setNickname(e.getNickname());
 				
@@ -310,7 +310,7 @@ public class UserAction extends BaseAction<User> implements
 					}
 				}
 			}else if(StringUtils.isNotBlank(e.getUsername())){//验证用户名是否被占用
-				logger.error("验证账号是否被占用");
+				logger.info("验证账号是否被占用");
 				getResponse().setCharacterEncoding("utf-8");
 				User user = new User();
 				user.setUsername(e.getUsername());
@@ -448,7 +448,7 @@ public class UserAction extends BaseAction<User> implements
 	 * @return
 	 */
 	public String checkOldPassword() throws Exception{
-		logger.error("checkOldPassword.."+e.getPassword());
+		logger.info("checkOldPassword.."+e.getPassword());
 		if(StringUtils.isBlank(e.getPassword())){
 			super.utf8JSON();
 			getResponse().getWriter().write("{\"error\":\"旧密码不能为空!\"}");

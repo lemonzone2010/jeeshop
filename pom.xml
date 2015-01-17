@@ -281,16 +281,12 @@
 		<dependency>
 			<groupId>com.sinaWeibo</groupId>
 			<artifactId>sinaWeibo</artifactId>
-			<version>1.0.0</version>
-			<scope>system</scope>
-			<systemPath>e:\bak\sinaWeibo.jar</systemPath>
+			<version>1.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.qqLoginSdk4J</groupId>
 			<artifactId>qqLoginSdk4J</artifactId>
-			<version>1.0.0</version>
-			<scope>system</scope>
-			<systemPath>e:\bak\qqLoginSdk4J.jar</systemPath>
+			<version>1.0</version>
 		</dependency>
 	</dependencies>
 	

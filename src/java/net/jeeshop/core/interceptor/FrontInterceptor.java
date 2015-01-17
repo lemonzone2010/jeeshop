@@ -25,14 +25,14 @@ public class FrontInterceptor extends AbstractInterceptor {
 	public static final String error = "error";//访问action异常
 
 	public String intercept(ActionInvocation actionInvocation) throws Exception {
-		logger.error("CommonInterceptor.intercept...");
+		logger.info("CommonInterceptor.intercept...");
 		try {
 			return actionInvocation.invoke();
 //			return intercept0(actionInvocation);
 		} catch (Throwable e) {
 			e.printStackTrace();
 			String msg = e.getMessage();
-			logger.error("msg="+msg);
+			logger.info("msg="+msg);
 			if(StringUtils.isNotBlank(msg)){
 				ServletActionContext.getRequest().getSession().setAttribute(FrontContainer.action_exception_error, msg);
 			}else{
@@ -55,7 +55,7 @@ public class FrontInterceptor extends AbstractInterceptor {
 		String namespace = actionInvocation.getProxy().getNamespace();
 		Object action2 = actionInvocation.getAction();
 		
-		logger.error("========CommonInterceptor interceptor! actionName="+actionName+";action="+action+";method="+method+";namespace="+namespace+";action2="+action2);
+		logger.info("========CommonInterceptor interceptor! actionName="+actionName+";action="+action+";method="+method+";namespace="+namespace+";action2="+action2);
 		return actionInvocation.invoke();
 		
 	}

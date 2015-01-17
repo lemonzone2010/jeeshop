@@ -59,7 +59,7 @@ public class TaskManager {
 	}
 
 	public void start() {
-		logger.error("TaskManager.start()");
+		logger.info("TaskManager.start()");
 		pool.execute(cancelOrderTask);
 		pool.execute(systemAutoNotifyTask);
 		pool.execute(manageCacheTask);
@@ -74,7 +74,7 @@ public class TaskManager {
 
 	//处理某个任务
 	private void doOneTask0(Task task) {
-		logger.error("doOneTask0...");
+		logger.info("doOneTask0...");
 		
 		try {
 			Runnable runnable = (Runnable) Class.forName(task.getClz()).newInstance();

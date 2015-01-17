@@ -37,12 +37,12 @@ public class CancelOrderTask implements Runnable{
 				e.printStackTrace();
 			}
 			
-			logger.error("OrderCancelTask.run...");
+			logger.info("OrderCancelTask.run...");
 			Order order = new Order();
 			order.setStartDate(sdf.format(DateUtils.addDays(new Date(), -7)));
 			List<Order> list = orderService.selectCancelList(order);
 			if(list!=null){
-				logger.error("list="+list.size());
+				logger.info("list="+list.size());
 				for(int i=0;i<list.size();i++){
 					Order orderInfo = list.get(i);
 					

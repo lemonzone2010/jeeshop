@@ -20,10 +20,10 @@ public class kuaidi100 {
 		
 		if(1==1){
 			String response = HttpUtil.get("http://127.0.0.1:8080/myshopFront/kuaidi100JSON.jsp",null,"UTF-8");
-			logger.error("response = "+response);
+			logger.info("response = "+response);
 //			Map map = JSON.toJavaObject(JSON.parseObject(response), Map.class);
 			Map<String,Object> map = (Map<String, Object>) JSON.parse(response);
-			logger.error("map = "+map.get("data"));
+			logger.info("map = "+map.get("data"));
 			return;
 		}
 		try {

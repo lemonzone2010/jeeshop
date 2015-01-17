@@ -29,10 +29,10 @@ public class kuaidi100Helper {
 	public static Kuaidi100Info selectKuaidi100(){
 		try {
 			String response = HttpUtil.get("http://api.kuaidi100.com/api?id=7fdd7136ff90ef2d&com=yunda&nu=1201205716323&valicode=&show=0&muti=1&order=desc",null,"UTF-8");
-			logger.error("response = "+response);
+			logger.info("response = "+response);
 			Kuaidi100Info info = JSON.parseObject(response, Kuaidi100Info.class);
-//			logger.error(info.getData().toString());
-			logger.error(info.toString());
+//			logger.info(info.getData().toString());
+			logger.info(info.toString());
 			return info;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -53,17 +53,17 @@ public class kuaidi100Helper {
 		
 		if(1==2){
 			String response = HttpUtil.get("http://127.0.0.1:8080/myshopFront/kuaidi100JSON.jsp",null,"UTF-8");
-			logger.error("response = "+response);
+			logger.info("response = "+response);
 			Kuaidi100Info info = JSON.parseObject(response, Kuaidi100Info.class);
-			logger.error(info.getData().toString());
+			logger.info(info.getData().toString());
 //			Map map = JSON.toJavaObject(JSON.parseObject(response), Map.class);
 //			Map<String,Object> map = (Map<String, Object>) JSON.parse(response);
-//			logger.error("map = "+map.get("data"));
+//			logger.info("map = "+map.get("data"));
 //			
 //			List<Kuaidi100Info> list = (List<Kuaidi100Info>) map.get("data");
-//			logger.error("list="+list.size());
+//			logger.info("list="+list.size());
 //			for(int i=0;i<list.size();i++){
-//				logger.error(list.get(i).toString());
+//				logger.info(list.get(i).toString());
 //			}
 			return;
 		}

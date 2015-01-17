@@ -49,9 +49,9 @@ public abstract class BaseAction<E extends PagerModel> extends ActionSupport
 		if(StringUtils.isNotBlank(this.getInit()) && this.getInit().equals("y")){
 			this.e.clear();
 			this.init = null;
-			logger.error("initPageSelect..clear all e param!");
+			logger.info("initPageSelect..clear all e param!");
 		}else{
-			logger.error("initPageSelect..init=n!");
+			logger.info("initPageSelect..init=n!");
 		}
 	}
 	public String getInit() {
@@ -362,7 +362,7 @@ public abstract class BaseAction<E extends PagerModel> extends ActionSupport
 	 */
 	@Override
 	public String execute() throws Exception {
-		logger.error("execute.e="+e.toString());
+		logger.info("execute.e="+e.toString());
 		throw new NullPointerException("BaseAction.execute方法禁止访问！");
 //		return super.execute();
 	}

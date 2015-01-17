@@ -70,7 +70,7 @@ public class RoleAction extends BaseAction<Role> {
 	 * @throws Exception
 	 */
 //	public String delet() throws Exception {
-//		logger.error("role.delete...");
+//		logger.info("role.delete...");
 //		throw new NotThisMethod(ManageContainer.not_this_method);
 ////		if(getIds()!=null && getIds().length>0){
 ////			for(int i=0;i<getIds().length;i++){

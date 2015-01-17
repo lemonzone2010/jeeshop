@@ -104,7 +104,7 @@ public class NewsAction extends BaseAction<News> {
 	 */
 	@Override
 	public String insert() throws Exception {
-		logger.error("NewsAction code = " + e.getCode());
+		logger.info("NewsAction code = " + e.getCode());
 		User user = (User) getSession().getAttribute(ManageContainer.manage_session_user_info);
 		getE().setCreateAccount(user.getUsername());
 		getE().setStatus(News.news_status_n);//未审核
@@ -121,8 +121,8 @@ public class NewsAction extends BaseAction<News> {
 	 */
 	@Override
 	public String update() throws Exception {
-		logger.error("NewsAction code = ");
-		logger.error("NewsAction code = " + e.getCode()+",id="+e.getId());
+		logger.info("NewsAction code = ");
+		logger.info("NewsAction code = " + e.getCode()+",id="+e.getId());
 //		getE().setStatus(News.news_status_n);//未审核
 		
 		getServer().update(getE());
@@ -232,7 +232,7 @@ public class NewsAction extends BaseAction<News> {
 
 	@Override
 	public String selectList() throws Exception {
-//		logger.error("NewsAction.selectList.type="+type);
+//		logger.info("NewsAction.selectList.type="+type);
 		super.selectList();
 		return toList;
 	}
@@ -285,11 +285,11 @@ public class NewsAction extends BaseAction<News> {
 	 */
 	public String unique() throws IOException{
 		
-		logger.error("检查文章code的唯一性");
+		logger.info("检查文章code的唯一性");
 		if(StringUtils.isBlank(e.getCode())){
 			throw new NullPointerException("参数不能为空！");
 		}
-//		logger.error("wait...10s");
+//		logger.info("wait...10s");
 //		try {
 //			Thread.sleep(10*1000L);
 //		} catch (InterruptedException e1) {
@@ -319,9 +319,9 @@ public class NewsAction extends BaseAction<News> {
 	@Override
 	public String deletes() throws Exception {
 //		return super.deletes();
-		logger.error("1..type="+e.getType());
+		logger.info("1..type="+e.getType());
 		getServer().deletes(getIds());
-		logger.error("2..type="+e.getType());
+		logger.info("2..type="+e.getType());
 		return selectList();
 	}
 	

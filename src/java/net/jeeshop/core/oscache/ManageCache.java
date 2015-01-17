@@ -90,14 +90,14 @@ public class ManageCache {
 		//加载吐槽评论数
 		SystemManager.ordersReport.setNotReplyCommentCount(commentService.selectNotReplyCount());
 		
-		logger.error("SystemManager.ordersReport = " + SystemManager.ordersReport.toString());
+		logger.info("SystemManager.ordersReport = " + SystemManager.ordersReport.toString());
 	}
 	
 //	/**
 //	 * 加载省市区数据
 //	 */
 //	private void loadArea(){
-//		logger.error("loadArea...");
+//		logger.info("loadArea...");
 //		Area area = new Area();
 //		area.setPcode("0");
 //		List<Area> rootData = areaService.selectList(area);
@@ -118,14 +118,14 @@ public class ManageCache {
 //		
 //		SystemManager.areaMap = map;
 //		
-////		logger.error("SystemManager.areaMap=="+SystemManager.areaMap);
+////		logger.info("SystemManager.areaMap=="+SystemManager.areaMap);
 //		
 //		String json = JSON.toJSONString(SystemManager.areaMap);
-////		logger.error("json="+json);
+////		logger.info("json="+json);
 //		try {
 //			//写到文件
 //			File file = new File("__area.txt");
-//			logger.error(file.getAbsolutePath());
+//			logger.info(file.getAbsolutePath());
 //			FileUtils.writeStringToFile(new File("__area.json"), json, "utf-8");
 //		} catch (IOException e) {
 //			e.printStackTrace();
@@ -136,18 +136,18 @@ public class ManageCache {
 //		long start = System.currentTimeMillis();
 //		try {
 //			String path = ManageCache.class.getResource("/").getPath();
-//			logger.error("path = " + path);
+//			logger.info("path = " + path);
 //			File file = new File(path + "__area.json");
-//			logger.error(file.getAbsolutePath());
+//			logger.info(file.getAbsolutePath());
 //			List<String> list = FileUtils.readLines(file, "utf-8");
-//			logger.error("list.size()="+list.size());
+//			logger.info("list.size()="+list.size());
 //			
 //			SystemManager.areaMap = JSON.parseObject(list.get(0),new TypeReference<Map<String,Area>>(){});
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
 //		
-//		logger.error("readJsonArea time = " + (System.currentTimeMillis() - start));
+//		logger.info("readJsonArea time = " + (System.currentTimeMillis() - start));
 //	}
 	
 	/**
@@ -194,12 +194,12 @@ public class ManageCache {
 	 * @throws Exception 
 	 */
 	public void loadAllCache() throws Exception {
-		logger.error("ManageCache.loadAllCache...");
+		logger.info("ManageCache.loadAllCache...");
 		loadOrdersReport();
 //		readJsonArea();
 		loadTask();
 		loadOSS();
-		logger.error("后台缓存加载完毕!");
+		logger.info("后台缓存加载完毕!");
 	}
 
 	public static void main(String[] args) {

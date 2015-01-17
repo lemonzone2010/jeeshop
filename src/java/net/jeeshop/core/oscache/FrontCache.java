@@ -251,7 +251,7 @@ public class FrontCache {
 		AlipayConfig.partner = pay.getPartner();
 		AlipayConfig.key = pay.getKey1();
 		
-//		logger.error("SystemManager.alipayConfig="+SystemManager.alipayConfig);
+//		logger.info("SystemManager.alipayConfig="+SystemManager.alipayConfig);
 		
 		/**
 		 * 加载评论配置
@@ -260,7 +260,7 @@ public class FrontCache {
 		commentType.setStatus(CommentType.commentType_status_y);
 		commentType = commentTypeService.selectOne(commentType);
 		SystemManager.commentTypeCode = commentType.getCode();
-		logger.error("SystemManager.commentTypeCode="+SystemManager.commentTypeCode);
+		logger.info("SystemManager.commentTypeCode="+SystemManager.commentTypeCode);
 	}
 
 	/**
@@ -291,14 +291,14 @@ public class FrontCache {
 				for(Iterator<Entry<String, Attribute>> it = SystemManager.attrsMap.entrySet().iterator();it.hasNext();){
 					Entry<String, Attribute> entry = it.next();
 					String id = String.valueOf(entry.getValue().getPid());
-//					logger.error("id="+id);
+//					logger.info("id="+id);
 					if(map.get(id)!=null){
 						entry.getValue().setCatalogID(map.get(id));
 					}
 				}
 				
-//				logger.error("SystemManager.attrsMap="+SystemManager.attrsMap);
-//				logger.error("SystemManager.attrsMap(63) = "+SystemManager.attrsMap.get("63"));
+//				logger.info("SystemManager.attrsMap="+SystemManager.attrsMap);
+//				logger.info("SystemManager.attrsMap(63) = "+SystemManager.attrsMap.get("63"));
 			}
 		}
 	}
@@ -346,7 +346,7 @@ public class FrontCache {
 	 */
 	public static List<Catalog> loadCatalogChildren(String catalogID) {
 		try {
-			logger.error(">>catalogID="+catalogID);
+			logger.info(">>catalogID="+catalogID);
 			if(StringUtils.isBlank(catalogID)){
 				throw new NullPointerException();
 			}
@@ -358,9 +358,9 @@ public class FrontCache {
 			
 			if(catalog.getPid().equals("0")){
 				if(catalog.getChildren()==null){
-					logger.error(">>主类别catalog.getChildren()=0");
+					logger.info(">>主类别catalog.getChildren()=0");
 				}else{
-					logger.error(">>主类别catalog.getChildren()="+catalog.getChildren().size());
+					logger.info(">>主类别catalog.getChildren()="+catalog.getChildren().size());
 				}
 				//主类别
 				return catalog.getChildren();
@@ -421,7 +421,7 @@ public class FrontCache {
 			}
 		}
 
-		logger.error("attrs=" + attrs);
+		logger.info("attrs=" + attrs);
 		return attrs;
 	}
 
@@ -446,8 +446,8 @@ public class FrontCache {
 		loadCatalogs2("p",SystemManager.catalogs);
 		loadCatalogs2("a",SystemManager.catalogsArticle);
 		
-		logger.error("SystemManager.catalogs="+SystemManager.catalogs.size());
-		logger.error("SystemManager.catalogsArticle="+SystemManager.catalogsArticle.size());
+		logger.info("SystemManager.catalogs="+SystemManager.catalogs.size());
+		logger.info("SystemManager.catalogsArticle="+SystemManager.catalogsArticle.size());
 		
 		SystemManager.catalogsMap.clear();
 		SystemManager.catalogsCodeMap.clear();
@@ -478,7 +478,7 @@ public class FrontCache {
 			SystemManager.catalogsMap.put(item.getId(),item);
 			
 			if(SystemManager.catalogsCodeMap.get(item.getCode())!=null){
-				logger.error("item.code = " + item.getCode());
+				logger.info("item.code = " + item.getCode());
 				throw new Exception("错误：商品类别code重复!");
 			}
 			
@@ -515,9 +515,9 @@ public class FrontCache {
 		List<Product> superMenuProducts = productService.loadHotProductShowInSuperMenu(product);
 		
 //		if(superMenuProducts==null || superMenuProducts.size()==0){
-//			logger.error("superMenuProducts = 0" + ",catalogCode = " + item.getCode());
+//			logger.info("superMenuProducts = 0" + ",catalogCode = " + item.getCode());
 //		}else{
-//			logger.error("superMenuProducts = " + superMenuProducts.size()  + ",catalogCode = " + item.getCode());
+//			logger.info("superMenuProducts = " + superMenuProducts.size()  + ",catalogCode = " + item.getCode());
 //		}
 		if(superMenuProducts!=null && superMenuProducts.size()>0){
 			item.setSuperMenuProducts(superMenuProducts);
@@ -548,9 +548,9 @@ public class FrontCache {
 		List<Product> hotProducts = productService.selectPageLeftHotProducts(p);
 		
 		if(hotProducts==null || hotProducts.size()==0){
-			logger.error("loadHotProductByCatalog.hotProducts = 0" + ",catalogCode = " + item.getCode());
+			logger.info("loadHotProductByCatalog.hotProducts = 0" + ",catalogCode = " + item.getCode());
 		}else{
-			logger.error("loadHotProductByCatalog.hotProducts = " + hotProducts.size()  + ",catalogCode = " + item.getCode());
+			logger.info("loadHotProductByCatalog.hotProducts = " + hotProducts.size()  + ",catalogCode = " + item.getCode());
 		}
 		
 		if(hotProducts!=null && hotProducts.size()>0){
@@ -857,18 +857,18 @@ public class FrontCache {
 		long start = System.currentTimeMillis();
 		try {
 			String path = FrontCache.class.getResource("/").getPath();
-			logger.error("path = " + path);
+			logger.info("path = " + path);
 			File file = new File(path + "__area.json");
-			logger.error(file.getAbsolutePath());
+			logger.info(file.getAbsolutePath());
 			List<String> list = FileUtils.readLines(file, "utf-8");
-			logger.error("list.size()="+list.size());
+			logger.info("list.size()="+list.size());
 			
 			SystemManager.areaMap = JSON.parseObject(list.get(0),new TypeReference<Map<String,Area>>(){});
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		logger.error("readJsonArea time = " + (System.currentTimeMillis() - start));
+		logger.info("readJsonArea time = " + (System.currentTimeMillis() - start));
 	}
 	
 	/**
@@ -921,9 +921,9 @@ public class FrontCache {
 //			List<Product> superMenuProducts = productService.loadHotProductShowInSuperMenu(product);
 //			
 //			if(superMenuProducts==null || superMenuProducts.size()==0){
-//				logger.error("superMenuProducts = 0");
+//				logger.info("superMenuProducts = 0");
 //			}else{
-//				logger.error("superMenuProducts = " + superMenuProducts.size());
+//				logger.info("superMenuProducts = " + superMenuProducts.size());
 //			}
 //			if(superMenuProducts!=null && superMenuProducts.size()>0){
 //				item.setSuperMenuProducts(superMenuProducts);
@@ -950,14 +950,14 @@ public class FrontCache {
 		}
 		List<Product> list = productService.selectActivityProductList(null);
 		if(list==null){
-			logger.error("loadActivityProductList.list=0");
+			logger.info("loadActivityProductList.list=0");
 		}else{
-			logger.error("loadActivityProductList.list="+list.size());
+			logger.info("loadActivityProductList.list="+list.size());
 			for(int i=0;i<list.size();i++){
 				Product p = list.get(i);
 				Activity activity = SystemManager.activityMap.get(p.getActivityID());
 				if(activity==null){
-					logger.error(" p = " + p.getId());
+					logger.info(" p = " + p.getId());
 					continue;
 				}
 				
@@ -995,7 +995,7 @@ public class FrontCache {
 	 * 加载积分商城商品列表
 	 */
 	public void loadActivityScoreProductList(){
-		logger.error("loadActivityScoreProductList...");
+		logger.info("loadActivityScoreProductList...");
 		if(SystemManager.activityMap.size()==0){
 			return;
 		}
@@ -1011,7 +1011,7 @@ public class FrontCache {
 				}
 			}
 		}
-		logger.error("loadActivityScoreProductList...productIds="+productIds.toString());
+		logger.info("loadActivityScoreProductList...productIds="+productIds.toString());
 		if(productIds.size()>0){
 			Product queryProduct = new Product();
 			queryProduct.setProductIds(productIds);
@@ -1022,7 +1022,7 @@ public class FrontCache {
 				Product p = SystemManager.activityScoreProductList.get(i);
 				Activity activity = SystemManager.activityMap.get(p.getActivityID());
 				if(activity==null){
-					logger.error(" p = " + p.getId());
+					logger.info(" p = " + p.getId());
 					continue;
 				}
 				
@@ -1040,7 +1040,7 @@ public class FrontCache {
 	 * 加载团购活动商品列表
 	 */
 	public void loadActivityTuanProductList(){
-		logger.error("loadActivityTuanProductList...");
+		logger.info("loadActivityTuanProductList...");
 		if(SystemManager.activityMap.size()==0){
 			return;
 		}
@@ -1056,7 +1056,7 @@ public class FrontCache {
 				}
 			}
 		}
-		logger.error("loadActivityScoreProductList...productIds="+productIds.toString());
+		logger.info("loadActivityScoreProductList...productIds="+productIds.toString());
 		if(productIds.size()>0){
 			Product queryProduct = new Product();
 			queryProduct.setProductIds(productIds);
@@ -1067,7 +1067,7 @@ public class FrontCache {
 				Product p = SystemManager.activityTuanProductList.get(i);
 				Activity activity = SystemManager.activityMap.get(p.getActivityID());
 				if(activity==null){
-					logger.error(" p = " + p.getId());
+					logger.info(" p = " + p.getId());
 					continue;
 				}
 				
@@ -1124,7 +1124,7 @@ public class FrontCache {
 	 * @throws Exception 
 	 */
 	public void loadAllCache() throws Exception {
-		logger.error("loadAllCache...");
+		logger.info("loadAllCache...");
 		StopWatch sw = new StopWatch();
 		sw.start("loadHotquery");
 		loadHotquery();
@@ -1215,7 +1215,7 @@ public class FrontCache {
 		sw.stop();
 		
 		System.out.println(sw.toString());
-		logger.error("前台缓存加载完毕!");
+		logger.info("前台缓存加载完毕!");
 	}
 
 	public static void main(String[] args) {

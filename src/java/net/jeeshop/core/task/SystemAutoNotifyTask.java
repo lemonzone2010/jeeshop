@@ -47,7 +47,7 @@ public class SystemAutoNotifyTask implements Runnable {
 //		HttpServletRequest request = (HttpServletRequest) ActionContext.getContext().get(ServletActionContext.HTTP_REQUEST);
 //		WebApplicationContext app = WebApplicationContextUtils.getWebApplicationContext(request.getSession().getServletContext());
 //		EmailNotifyProductService emailNotifyProductService = (EmailNotifyProductService) app.getBean("emailNotifyProductServiceManage");
-		logger.error("emailNotifyProductService="+emailNotifyProductService);
+		logger.info("emailNotifyProductService="+emailNotifyProductService);
 		while (true) {
 			try {
 //				TimeUnit.DAYS.sleep(1);
@@ -55,7 +55,7 @@ public class SystemAutoNotifyTask implements Runnable {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			logger.error("OrderCancelTask.run...");
+			logger.info("OrderCancelTask.run...");
 			emailNotifyProductService.autoNotify();
 		}
 	}

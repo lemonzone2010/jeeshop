@@ -195,17 +195,17 @@ public class SitemapTask implements Runnable {
 		}
 
 		public void refreshList() {
-			logger.error("refreshList...");
+			logger.info("refreshList...");
 			if (this.path.equals("")){
 				path = "c:\\";
 			}
-			logger.error("refreshList...path = " + path);
+			logger.info("refreshList...path = " + path);
 			myDir = new File(path);
 
 			fileList.clear();
 			contents = myDir.listFiles();
-			logger.error("refreshList...myDir = " + myDir);
-			logger.error("refreshList...contents = " + contents);
+			logger.info("refreshList...myDir = " + myDir);
+			logger.info("refreshList...contents = " + contents);
 			if(contents==null){
 				currentFileIt = null;
 				return ;

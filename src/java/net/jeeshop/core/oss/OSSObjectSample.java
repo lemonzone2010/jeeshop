@@ -83,11 +83,11 @@ public class OSSObjectSample {
 	private static void save0(String filePath, File file)
 			throws FileNotFoundException {
 		if(SystemManager.aliyunOSS==null){
-    		logger.error("阿里云存储未被启用");
+    		logger.info("阿里云存储未被启用");
     		return;
     	}
     	
-    	logger.error("filePath="+filePath);
+    	logger.info("filePath="+filePath);
     	System.out.println("filePath="+filePath);
     	// 可以使用ClientConfiguration对象设置代理服务器、最大重试次数等参数。
         ClientConfiguration config = new ClientConfiguration();
@@ -96,7 +96,7 @@ public class OSSObjectSample {
         ensureBucket(client, SystemManager.aliyunOSS.getBucketName());
         setBucketPublicReadable(client, SystemManager.aliyunOSS.getBucketName());
         // 获取Object，返回结果为OSSObject对象
-        logger.error("bucketName=" + SystemManager.aliyunOSS.getBucketName());
+        logger.info("bucketName=" + SystemManager.aliyunOSS.getBucketName());
         OSSObject object = client.getObject(SystemManager.aliyunOSS.getBucketName(), "attached/");
         
         // 获取Object的输入流
@@ -202,7 +202,7 @@ public class OSSObjectSample {
             throws OSSException, ClientException{
 
         if (client.isBucketExist(bucketName)){
-        	logger.error("isBucketExist true");
+        	logger.info("isBucketExist true");
             return;
         }
 

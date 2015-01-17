@@ -39,7 +39,7 @@ public class SystemListener implements ServletContextListener {
 			taskManager.start();
 		} catch (Throwable e) {
 			e.printStackTrace();
-			logger.error("System load faild!"+e.getMessage());
+			logger.info("System load faild!"+e.getMessage());
 			try {
 				throw new Exception("系统初始化失败！");
 			} catch (Exception e1) {

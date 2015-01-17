@@ -183,8 +183,8 @@
 //		loadCatalogs2("p",SystemManager.catalogs);
 //		loadCatalogs2("a",SystemManager.catalogsArticle);
 //		
-//		logger.error("SystemManager.catalogs="+SystemManager.catalogs.size());
-//		logger.error("SystemManager.catalogsArticle="+SystemManager.catalogsArticle.size());
+//		logger.info("SystemManager.catalogs="+SystemManager.catalogs.size());
+//		logger.info("SystemManager.catalogsArticle="+SystemManager.catalogsArticle.size());
 //		
 //		SystemManager.catalogsMap.clear();
 //		SystemManager.catalogsCodeMap.clear();
@@ -345,7 +345,7 @@
 //	 * 加载省市区数据
 //	 */
 //	private void loadArea(){
-//		logger.error("loadArea...");
+//		logger.info("loadArea...");
 //		Area area = new Area();
 //		area.setPcode("0");
 //		List<Area> rootData = areaService.selectList(area);
@@ -366,14 +366,14 @@
 //		
 //		SystemManager.areaMap = map;
 //		
-////		logger.error("SystemManager.areaMap=="+SystemManager.areaMap);
+////		logger.info("SystemManager.areaMap=="+SystemManager.areaMap);
 //		
 //		String json = JSON.toJSONString(SystemManager.areaMap);
-////		logger.error("json="+json);
+////		logger.info("json="+json);
 //		try {
 //			//写到文件
 //			File file = new File("__area.txt");
-//			logger.error(file.getAbsolutePath());
+//			logger.info(file.getAbsolutePath());
 //			FileUtils.writeStringToFile(new File("__area.json"), json, "utf-8");
 //		} catch (IOException e) {
 //			e.printStackTrace();
@@ -403,7 +403,7 @@
 //	//递归分离区域数据
 //	@Deprecated
 //	private void getAreaByDigui(List<Area> data,Map<String, Area> map){
-//		logger.error("getAreaByDigui data = " + data.size() + ",map = " + map.size());
+//		logger.info("getAreaByDigui data = " + data.size() + ",map = " + map.size());
 //		if (data == null || data.size() == 0) {
 //			return;
 //		}
@@ -423,8 +423,8 @@
 //			}
 //		}
 //		
-//		logger.error("data = " + data.size());
-//		logger.error("map = " + map.toString());
+//		logger.info("data = " + data.size());
+//		logger.info("map = " + map.toString());
 //	}
 //	
 //	/**
@@ -458,7 +458,7 @@
 //		AlipayConfig.partner = pay.getPartner();
 //		AlipayConfig.key = pay.getKey1();
 //		
-////		logger.error("SystemManager.alipayConfig="+SystemManager.alipayConfig);
+////		logger.info("SystemManager.alipayConfig="+SystemManager.alipayConfig);
 //		
 //		/**
 //		 * 加载评论配置
@@ -467,25 +467,25 @@
 ////		commentType.setStatus(CommentType.commentType_status_y);
 ////		commentType = commentTypeService.selectOne(commentType);
 ////		SystemManager.commentTypeCode = commentType.getCode();
-////		logger.error("SystemManager.commentTypeCode="+SystemManager.commentTypeCode);
+////		logger.info("SystemManager.commentTypeCode="+SystemManager.commentTypeCode);
 //	}
 //	
 //	private void readJsonArea(){
 //		long start = System.currentTimeMillis();
 //		try {
 //			String path = CacheManager.class.getResource("/").getPath();
-//			logger.error("path = " + path);
+//			logger.info("path = " + path);
 //			File file = new File(path + "__area.json");
-//			logger.error(file.getAbsolutePath());
+//			logger.info(file.getAbsolutePath());
 //			List<String> list = FileUtils.readLines(file, "utf-8");
-//			logger.error("list.size()="+list.size());
+//			logger.info("list.size()="+list.size());
 //			
 //			SystemManager.areaMap = JSON.parseObject(list.get(0),new TypeReference<Map<String,Area>>(){});
 //		} catch (IOException e) {
 //			e.printStackTrace();
 //		}
 //		
-//		logger.error("readJsonArea time = " + (System.currentTimeMillis() - start));
+//		logger.info("readJsonArea time = " + (System.currentTimeMillis() - start));
 //	}
 //	
 //	/**
@@ -506,7 +506,7 @@
 //	 * 加载全部的内存数据
 //	 */
 //	public void loadAllCache() {
-//		logger.error("loadAllCache...");
+//		logger.info("loadAllCache...");
 //		
 ////		initAreaDataToDB();
 ////		loadArea();
@@ -519,7 +519,7 @@
 //		loadPlugConfig();
 //		loadOrdersReport();
 //		loadNotifyTemplate();
-//		logger.error("后台缓存加载完毕!");
+//		logger.info("后台缓存加载完毕!");
 //	}
 //	
 //	public static void main(String[] args) {
