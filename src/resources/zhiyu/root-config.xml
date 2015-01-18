@@ -6,9 +6,15 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
 	default-autowire="byName">
+	
     <!-- 设置使用注解的类所在的jar包 -->
     <context:component-scan base-package="com.zhiyu.service">
     	<context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
     </context:component-scan>
+    <context:component-scan base-package="com.zhiyu.bean">
+    	<context:include-filter type="annotation" expression="org.hum.framework.hawaii.orm.annotation.Table"/>
+    </context:component-scan>
 
+	<import resource="dao-config.xml"/>
+	<import resource="sqlmap-config.xml"/>
 </beans>
