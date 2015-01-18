@@ -6,10 +6,9 @@
     http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd"
 	default-autowire="byName">
 	
-	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
-		<property name="dataSource" ref="dataSourceTarget" />
-		<property name="configLocation" value="classpath:zhiyu/sqlmap-config.xml" />
-	</bean>
+    <context:component-scan base-package="com.zhiyu.bean">
+    	<context:include-filter type="annotation" expression="org.hum.framework.hawaii.orm.annotation.Table"/>
+    </context:component-scan>
 	<!-- orm -->
 	<bean id="mapperHolder" class="com.zhiyu.framework.spring.SpringIocMapperHolder" />
 	<!-- dao -->
@@ -17,7 +16,5 @@
 		<property name="tableMapperHolder" ref="mapperHolder" />
 		<property name="dataSource" ref="dataSourceTarget" />
 	</bean>
-	<!-- container -->
-	<bean id="container" class="com.zhiyu.framework.spring.TableContainer" />
 	
 </beans>

@@ -46,4 +46,11 @@ public class TReply {
 	public void setCreatedate(Date createdate) {
 		this.createdate = createdate;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("TReply [id=").append(id).append(", commentID=").append(commentID).append(", content=").append(content).append(", createdate=").append(createdate).append("]");
+		return builder.toString();
+	}
 }

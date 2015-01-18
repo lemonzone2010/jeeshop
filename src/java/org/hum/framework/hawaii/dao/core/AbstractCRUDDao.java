@@ -180,6 +180,7 @@ public abstract class AbstractCRUDDao extends AbstractDao {
 	 * 这里怎么跟AnnotationBeanParse中的parseColumnType整合到一起呢？
 	 * 还有ColumnType枚举也是如此，增加一种类型，需要改动3个类，太零散了……
 	 */
+	@SuppressWarnings("rawtypes")
 	private static String getValSql(Object obj) {
 		if (obj == null) {
 			return null;

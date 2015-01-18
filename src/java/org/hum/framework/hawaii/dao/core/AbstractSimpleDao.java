@@ -67,6 +67,7 @@ public abstract class AbstractSimpleDao extends AbstractCRUDDao {
 		return list(queryWrapper, pageNo, pageSize, null);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public <T> List<T> list(QueryWrapper<T> queryWrapper, int pageNo, int pageSize, String[] queryColumns) throws SQLException {
 		Assert.isTrue(pageNo > 0, "pageNo must lagger than zero");

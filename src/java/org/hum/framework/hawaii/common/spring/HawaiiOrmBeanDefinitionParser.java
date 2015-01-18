@@ -58,6 +58,7 @@ public class HawaiiOrmBeanDefinitionParser implements BeanDefinitionParser {
 		}
 
 		// if no "parser" , determine to default
+		// 这里写法有问题，内部框架居然依赖了外部框架
 		if (beanParser == null) {
 			beanParser = new AnnotationClassParser();
 		}

@@ -35,7 +35,7 @@ public abstract class AbstractDao implements BaseDao, PaginDao, SqlSupportDao, T
 		return resultList;
 	}
 
-	@SuppressWarnings( { "unchecked" })
+	@SuppressWarnings( { "unchecked", "rawtypes" })
 	@Override
 	public <T> T queryForMap(String sql, Class<T> classType) throws SQLException {
 		Object queryForObject = queryForMap(sql);
