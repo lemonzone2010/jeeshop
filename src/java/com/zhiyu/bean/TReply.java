@@ -4,13 +4,13 @@ import java.util.Date;
 
 import org.hum.framework.hawaii.orm.annotation.Column;
 import org.hum.framework.hawaii.orm.annotation.Table;
-import org.hum.framework.hawaii.orm.enumtype.ColumnType;
+import org.hum.framework.hawaii.orm.enumtype.ColumnTypeEnum;
 
 @Table(tableName="t_reply")
 public class TReply {
 
 	private Integer id;
-	@Column(colName = "commentID", colType = ColumnType.Int)
+	@Column(colName = "commentID", colType = ColumnTypeEnum.Int)
 	private Integer commentID;
 	private String content;
 	private Date createdate;

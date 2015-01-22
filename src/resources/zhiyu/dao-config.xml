@@ -10,7 +10,7 @@
     	<context:include-filter type="annotation" expression="org.hum.framework.hawaii.orm.annotation.Table"/>
     </context:component-scan>
 	<!-- orm -->
-	<bean id="mapperHolder" class="com.zhiyu.framework.spring.SpringIocMapperHolder" />
+	<bean id="mapperHolder" class="org.hum.framework.hawaii.common.spring.SpringIocMapperHolder" />
 	<!-- dao -->
 	<bean id="hawaiiDao" class="org.hum.framework.hawaii.dao.core.DefaultSimpleDao">
 		<property name="tableMapperHolder" ref="mapperHolder" />
