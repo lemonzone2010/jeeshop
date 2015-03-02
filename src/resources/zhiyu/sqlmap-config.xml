@@ -7,5 +7,7 @@ Config 2.0/" "http://www.ibatis.com/dtd/sql-map-config-2.dtd">
               maxSessions="300" maxTransactions="300" useStatementNamespaces="true"
               defaultStatementTimeout="10"/>
     
-    <sqlMap resource="zhiyu/sqlmap/mysql.xml"/>
+    <!-- 
+     <sqlMap resource="zhiyu/sqlmap/mysql.xml"/>
+     -->
 </sqlMapConfig>

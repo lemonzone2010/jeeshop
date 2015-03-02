@@ -13,5 +13,5 @@
     </context:component-scan>
 
 	<import resource="dao-config.xml"/>
-	<import resource="sqlmap-config.xml"/>
+	<!-- <import resource="sqlmap-config.xml"/> -->
 </beans>

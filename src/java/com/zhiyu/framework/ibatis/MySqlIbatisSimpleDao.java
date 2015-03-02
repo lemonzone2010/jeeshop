@@ -7,7 +7,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
-import org.hum.framework.hawaii.dao.core.AbstractSimpleDao;
+import org.hum.hawaii.dao.core.AbstractSimpleDao;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 

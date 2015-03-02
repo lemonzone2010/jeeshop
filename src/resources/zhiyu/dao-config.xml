@@ -7,14 +7,15 @@
 	default-autowire="byName">
 	
     <context:component-scan base-package="com.zhiyu.bean">
-    	<context:include-filter type="annotation" expression="org.hum.framework.hawaii.orm.annotation.Table"/>
+    	<context:include-filter type="annotation" expression="org.hum.framework.hawaii.spring.annotation.Table"/>
     </context:component-scan>
 	<!-- orm -->
-	<bean id="mapperHolder" class="org.hum.framework.hawaii.common.spring.SpringIocMapperHolder" />
+	<bean id="mapperHolder" class="org.hum.framework.hawaii.spring.SpringIocMapperHolder" />
 	<!-- dao -->
-	<bean id="hawaiiDao" class="org.hum.framework.hawaii.dao.core.DefaultSimpleDao">
+	<bean id="hawaiiDao" class="org.hum.hawaii.dao.core.DefaultSimpleDao">
 		<property name="tableMapperHolder" ref="mapperHolder" />
 		<property name="dataSource" ref="dataSourceTarget" />
+		<property name="abstractSQLGenerator" value="mysql" />
 	</bean>
 	
 </beans>

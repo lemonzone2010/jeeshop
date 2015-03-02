@@ -251,7 +251,7 @@
 		</dependency>
 		<dependency>
 			<groupId>org.hum</groupId>
-			<artifactId>hawaii</artifactId>
+			<artifactId>hawaii-spring-plugin</artifactId>
 			<version>0.0.1</version>
 			<scope>compile</scope>
 		</dependency>

@@ -1,8 +1,7 @@
 <%@page import="net.jeeshop.core.front.SystemManager"%>
 <%@page import="net.jeeshop.services.front.product.bean.Product"%>
 <%@page import="net.jeeshop.services.front.product.ProductService"%>
-<%@page
-	import="org.springframework.web.context.support.WebApplicationContextUtils"%>
+<%@page import="org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@page import="org.springframework.web.context.WebApplicationContext"%>
 <%@page import="com.opensymphony.xwork2.ActionContext"%>
 <%@page import="org.apache.commons.lang.StringUtils"%>
@@ -254,16 +253,7 @@ function defaultProductImg(){
 					<div class="row" style="margin-top: 10px;">
 						<div class="col-xs-6" id="productMainDiv">
 							<%@ include file="product_center_piclist_slide2.jsp"%>
-							<!-- 
-							<ul id="myGallery">
-								<li style="max-width: 408px; height: 200px;"><img src="<s:property escape="false" value="e.maxPicture" />" />
-								<s:iterator value="e.imageList" status="i" var="img">
-									<li style="max-width: 408px; height: 200px;"><img src="<s:property escape="false" value="img" />" />
-								</s:iterator>
-							</ul>
-							 -->
 						</div>
-						
 						<!-- 产品详细信息 -->
 						<div class="col-xs-6">
 							<div style="line-height: 20px;">
@@ -283,7 +273,6 @@ function defaultProductImg(){
 														</span>
 													</s:if>
 													<s:elseif test="e.discountType.equals(\"r\")">
-	<%-- 													<span class="badge pull-left" style="background-color:red;"> --%>
 														<span class="label label-danger">促销价
 															<b style="font-weight: bold;">
 																￥<s:property escape="false" value="e.finalPrice" />
@@ -308,8 +297,6 @@ function defaultProductImg(){
 														</b>
 													</span>
 												</s:elseif>
-												
-							
 												<br>
 												<!-- 活动结束时间显示 -->
 												距离活动结束还剩：<div style="display: inline;" timer="activityEndDateTime" activityEndDateTime="<s:property escape="false" value="e.activityEndDateTime" />"></div>
@@ -346,11 +333,6 @@ function defaultProductImg(){
 										</s:else>
 											￥<span id="nowPrice"><s:property escape="false" value="e.nowPrice" /></span>
 										</b><br>
-										
-		<%-- 								宝贝详情：<s:if test="e.isnew.equals(\"y\")"><font style="color: red;">新品</font>|</s:if> --%>
-		<%-- 								<s:if test="e.sale.equals(\"y\")"><font style="color: red;">特价</font>|</s:if> --%>
-		<%-- 								<s:property escape="false" value="e.hit"/>人浏览<br> --%>
-										
 										<s:if test="e.score>0">
 											赠送：<s:property escape="false" value="e.score"/>个积分点<br>
 										</s:if>
@@ -358,13 +340,9 @@ function defaultProductImg(){
 										
 									</div>
 								</div>
-								
-								
-								
 								<s:if test="e.specJsonString!=null">
 									<!-- 商品规格 -->
 									<s:hidden name="e.specJsonString" id="specJsonString"/>
-<%-- 									<span class="badge" disabled="disabled">42</span> --%>
 									<div style="border:0px solid red;" class="spec" id="specDiv">
 										<dl>
 											<dt style="float: left;">尺寸：</dt>
@@ -406,7 +384,6 @@ function defaultProductImg(){
 											
 											<!-- 超出库存提示语--> 
 											<div id="exceedDivError" class="alert alert-danger fade in" style="display: none;margin-bottom: 0px;">
-		<!-- 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
 												<h4 id="exceedSpanError"></h4>
 											</div>
 											
@@ -425,7 +402,6 @@ function defaultProductImg(){
 												<button type="button" data-toggle="show" data-placement="top" id="addToCartBtn" onclick="addToCart()" value="加入购物车" disabled="disabled" class="btn btn-primary btn-sm">
 													<span class="glyphicon glyphicon-shopping-cart"></span>加入购物车
 												</button>
-<%-- 												<s:submit value="加入购物车" cssClass="btn btn-warning" /> --%>
 											</s:if>
 											<s:else>
 												<button type="button" id="addToCartBtn" onclick="addToCart()" value="加入购物车" class="btn btn-primary btn-sm" disabled="disabled">

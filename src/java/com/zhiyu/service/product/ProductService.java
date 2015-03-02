@@ -6,8 +6,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.hum.framework.hawaii.dao.bean.QueryWrapper;
-import org.hum.framework.hawaii.dao.core.AbstractDao;
+import org.hum.hawaii.dao.bean.QueryWrapper;
+import org.hum.hawaii.dao.core.AbstractDao;
 import org.springframework.stereotype.Service;
 
 import com.zhiyu.bean.TReply;
