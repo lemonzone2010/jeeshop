@@ -4,7 +4,7 @@ import java.util.Date;
 
 import org.hum.framework.hawaii.spring.annotation.Column;
 import org.hum.framework.hawaii.spring.annotation.Table;
-import org.hum.framework.hawaii.spring.enumtype.ColumnTypeEnum;
+import org.hum.hawaii.orm.enumtype.ColumnTypeEnum;
 
 @Table(tableName="t_reply")
 public class TReply {
