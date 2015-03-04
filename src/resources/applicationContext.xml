@@ -20,9 +20,9 @@
 	<bean id="dataSourceTarget" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
 		<property name="driverClass" value="com.mysql.jdbc.Driver" />
-		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/jeeshop" />
-		<property name="user" value="root" />
-		<property name="password" value="11111111" />
+		<property name="jdbcUrl" value="jdbc:mysql://115.29.35.230:3306/git_jeeshop" />
+		<property name="user" value="zhiyubook" />
+		<property name="password" value="666666" />
 		<!--连接池中保留的最小连接数。 -->
 		<property name="minPoolSize">
 			<value>5</value>
